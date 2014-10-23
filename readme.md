@@ -1,5 +1,9 @@
 # Installation
 
+Passer en root
+
+	su
+
 ## Oracle Java
 
 Download
@@ -9,7 +13,7 @@ Download
 Extract
 
 	tar -xzf jdk-7u71-linux-x64.tar.gz
-	sudo mv jdk-7u71-linux-x64 /usr/java
+	mv jdk1.7.0_71 /usr/java
 
 ## install alternatives
 
@@ -22,18 +26,18 @@ Vérifier version :
 	
 	java -version
 
-Same for javac :
+Chnager javac :
 
 	alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0_71/bin/javac 2
 	alternatives --config javac
 
-# install cassandra
+# Installer cassandra
 
-	wget http://www.apache.org/dyn/closer.cgi?path=/cassandra/2.1.0/apache-cassandra-2.1.0-bin.tar.gz
+	wget http://wwwftp.ciril.fr/pub/apache/cassandra/2.1.0/apache-cassandra-2.1.0-bin.tar.gz
 
 	tar -xzf apache-cassandra-2.1.0-bin.tar.gz
-	sudo mv apache-cassandra-2.1.0-bin /opt/
-	sudo ln -s /opt/apache-cassandra-2.1.0-bin
+	mv apache-cassandra-2.1.0 /opt/
+	ln -s /opt/apache-cassandra-2.1.0 cassandra
 
 	export PATH=/opt/cassandra/bin:$PATH
 
@@ -41,8 +45,8 @@ Same for javac :
 
 	wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0-bin-hadoop2.4.tgz
 	tar -zxf spark-1.1.0-bin-hadoop2.4.tgz
-	sudo mv spark-1.1.0-bin-hadoop2.4 /opt/
-	sudo ln -s spark-1.1.0-bin-hadoop2.4/ spark
+	mv spark-1.1.0-bin-hadoop2.4 /opt/
+	ln -s spark-1.1.0-bin-hadoop2.4/ spark
 
 # compile spark-cassandra-connector
 
@@ -51,12 +55,6 @@ Cloner le repository
 	git clone https://github.com/datastax/spark-cassandra-connector.git
 
 	cd spark-cassandra-connector
-
-Installer SBT
-
-	wget https://dl.bintray.com/sbt/rpm/sbt-0.13.6.rpm
-	chmod u+x sbt-0.13.6.rpm
-	./sbt-0.13.6.rpm
 
 Builder le Jar Assembly :
 
@@ -69,12 +67,12 @@ Les packages jar sont situés aux emplacement suivant :
 
 Déplacer le jar scala à un emplacement défini
 
-	sudo mkdir /opt/spark/connector
-	sudo mv spark-cassandra-connector-assembly-1.2.0-SNAPSHOT.jar /opt/spark/connector
+	mkdir /opt/spark/connector
+	mv spark-cassandra-connector-assembly-1.2.0-SNAPSHOT.jar /opt/spark/connector
 
 Ajouter les jar au classpath de Spark
 	
-	sudo echo "SPARK_CLASSPATH=/opt/spark/connector/*" >> /opt/spark/conf/spark-env.sh
+	echo "SPARK_CLASSPATH=/opt/spark/connector/*" >> /opt/spark/conf/spark-env.sh
 
 # spark cassandra connector
 
