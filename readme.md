@@ -16,6 +16,7 @@ Installation :
 	ln -s /opt/apache-cassandra-2.1.0 cassandra
 
 Ajouter à .bashrc
+
 	export PATH=/opt/cassandra/bin:$PATH
 
 ## Spark
@@ -26,6 +27,7 @@ Ajouter à .bashrc
 	ln -s spark-1.1.0-bin-hadoop2.4/ spark
 
 Ajouter à .bashrc
+
 	export PATH=/opt/spark/bin:$PATH
 
 
@@ -35,10 +37,9 @@ Cloner le repository
 
 	git clone https://github.com/datastax/spark-cassandra-connector.git
 
-	cd spark-cassandra-connector
-
 Builder le Jar Assembly :
 
+	cd spark-cassandra-connector
 	sbt assembly
 
 Les packages jar sont situés aux emplacement suivant :
