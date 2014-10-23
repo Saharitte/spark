@@ -4,34 +4,13 @@ Passer en root
 
 	su
 
-## Oracle Java
 
-Download
 
-	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.tar.gz"
+# Cassandra
 
-Extract
-
-	tar -xzf jdk-7u71-linux-x64.tar.gz
-	mv jdk1.7.0_71 /usr/java
-
-## install alternatives
-
-Change java to Oracle :
-
-	alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_71/bin/java 2
-	alternatives --config java
-
-Vérifier version :
-	
-	java -version
-
-Chnager javac :
-
-	alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0_71/bin/javac 2
-	alternatives --config javac
-
-# Installer cassandra
+	Prérequis :
+	Java jdk7
+	Python 2.7
 
 	wget http://wwwftp.ciril.fr/pub/apache/cassandra/2.1.0/apache-cassandra-2.1.0-bin.tar.gz
 
@@ -39,16 +18,21 @@ Chnager javac :
 	mv apache-cassandra-2.1.0 /opt/
 	ln -s /opt/apache-cassandra-2.1.0 cassandra
 
+Ajouter à .bashrc
 	export PATH=/opt/cassandra/bin:$PATH
 
-# install spark
+# Spark
 
 	wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0-bin-hadoop2.4.tgz
 	tar -zxf spark-1.1.0-bin-hadoop2.4.tgz
 	mv spark-1.1.0-bin-hadoop2.4 /opt/
 	ln -s spark-1.1.0-bin-hadoop2.4/ spark
 
-# compile spark-cassandra-connector
+Ajouter à .bashrc
+	export PATH=/opt/spark/bin:$PATH
+
+
+# spark-cassandra-connector
 
 Cloner le repository
 
@@ -74,14 +58,8 @@ Ajouter les jar au classpath de Spark
 	
 	echo "SPARK_CLASSPATH=/opt/spark/connector/*" >> /opt/spark/conf/spark-env.sh
 
-# spark cassandra connector
-
-# Configuration spark
-
-Ajouter le 
-
-
-# Lancer Cassandra
+# Test
+## Lancer Cassandra
 
 	cassandra
 
@@ -97,7 +75,7 @@ Créer un keyspace, une table et insérer des données
 	INSERT INTO test.kv(key, value) VALUES ('key1', 1);
 	INSERT INTO test.kv(key, value) VALUES ('key2', 2);
 
-# Test Spark-Shell
+## Spark-Shell
 
 	sc.stop
 
@@ -116,7 +94,7 @@ Créer un keyspace, une table et insérer des données
 
 
 
-# Test spark-cassandra-connector-java
+## Test spark-cassandra-connector-java
 
 Lancer JavaDemo avec les paramètres 
 	
