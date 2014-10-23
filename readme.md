@@ -1,17 +1,3 @@
-
-http://tcotav.github.io/chefdk_getting_started.html
-# Vagrant
-
-vagrant init chef/centos-7.0
-vagrant up
-vagrant ssh
-
-
-# Users
-* root:root
-* zenika:zenika
-* vagrant:
-
 # Installation
 
 ## Oracle Java
