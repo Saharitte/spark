@@ -1,12 +1,6 @@
 # Installation
 
-Passer en root
-
-	su
-
-
-
-# Cassandra
+## Cassandra
 
 	Prérequis :
 	Java jdk7
@@ -21,7 +15,7 @@ Passer en root
 Ajouter à .bashrc
 	export PATH=/opt/cassandra/bin:$PATH
 
-# Spark
+## Spark
 
 	wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0-bin-hadoop2.4.tgz
 	tar -zxf spark-1.1.0-bin-hadoop2.4.tgz
@@ -32,7 +26,7 @@ Ajouter à .bashrc
 	export PATH=/opt/spark/bin:$PATH
 
 
-# spark-cassandra-connector
+## spark-cassandra-connector
 
 Cloner le repository
 
