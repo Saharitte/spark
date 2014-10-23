@@ -4,9 +4,10 @@
 
 Prérequis :
 * Java jdk7
-* Python 2.7
 * Jna
+* Python 2.7
 
+Installation :
 
 	wget http://wwwftp.ciril.fr/pub/apache/cassandra/2.1.0/apache-cassandra-2.1.0-bin.tar.gz
 
