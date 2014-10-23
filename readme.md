@@ -73,6 +73,7 @@ Créer un keyspace, une table et insérer des données
 	INSERT INTO test.kv(key, value) VALUES ('key1', 1);
 	INSERT INTO test.kv(key, value) VALUES ('key2', 2);
 
+
 ## Spark-Shell
 
 	sc.stop
@@ -90,10 +91,12 @@ Créer un keyspace, une table et insérer des données
 	println(rdd.map(_.getInt("value")).sum)
 
 
-
-
 ## Test spark-cassandra-connector-java
+
+Ajouter le jar "spark-cassandra-connector-java-assembly-1.2.0-SNAPSHOT.jar" au classpath.
 
 Lancer JavaDemo avec les paramètres 
 	
 	local[2] 127.0.0.1
+
+NB : Le jar de Maven ne fonctionne pas avec les versions utilisées
